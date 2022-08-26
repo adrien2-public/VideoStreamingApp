@@ -39,7 +39,7 @@ $ windowsExecute.bat
 (http://lolcalhost:8081)
 ```
 7) Use credentials of John Smith for login , credentials are found in the kong credentials file
- "username=John17100"		 "password=monday@500"
+
 ```
  username = John17100	
  password = monday@500
