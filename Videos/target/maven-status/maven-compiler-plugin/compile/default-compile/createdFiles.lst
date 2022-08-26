@@ -1,0 +1,16 @@
+com\example\Videos\Repository\AnalyticsRepo.class
+com\example\Videos\WrapperObjects\VideoWrapperObject.class
+com\example\Videos\Controller\VideoController.class
+com\example\Videos\Service\VideoService$1.class
+com\example\Videos\Repository\VideoRepo.class
+com\example\Videos\WrapperObjects\VideoList.class
+com\example\Videos\VideoApplication$1.class
+com\example\Videos\WrapperObjects\MyVideoWO.class
+com\example\Videos\VideoApplication.class
+com\example\Videos\Entity\VideoAnalytics.class
+com\example\Videos\WrapperObjects\FriendsWO.class
+com\example\Videos\WrapperObjects\FriendList.class
+com\example\Videos\WrapperObjects\FeedbackWO.class
+com\example\Videos\Entity\Video.class
+com\example\Videos\WrapperObjects\MyVideoFeedWrapperObject.class
+com\example\Videos\Service\VideoService.class

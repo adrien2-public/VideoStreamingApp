@@ -1,0 +1,36 @@
+curl  -X POST --url http://localhost:8001/consumers/ --data "username=anonymous_users" --data "id=81823632-10c0-4098-a4f7-31062520c1e6"
+
+curl  -X POST  http://localhost:8001/services/ --data "name=account-service" --data "url=http://host.docker.internal:8500"
+curl  -X POST  http://localhost:8001/services/ --data "name=messages-service" --data "url=http://host.docker.internal:8502"
+curl  -X POST  http://localhost:8001/services/ --data "name=video-service" --data "url=http://host.docker.internal:8501"
+curl  -X POST  http://localhost:8001/services/ --data "name=registration-service" --data "url=http://host.docker.internal:8504"
+curl  -X POST  http://localhost:8001/services/ --data "name=authentication-service" --data "url=http://host.docker.internal:8503"
+
+curl  -X POST  http://localhost:8001/services/account-service/routes --data "paths[]=/accounts"
+curl  -X POST   http://localhost:8001/services/messages-service/routes --data "paths[]=/messages"
+curl  -X POST   http://localhost:8001/services/video-service/routes --data "paths[]=/videos"
+curl  -X POST   http://localhost:8001/services/registration-service/routes --data "paths[]=/registrations"
+curl  -X POST   http://localhost:8001/services/authentication-service/routes --data "paths[]=/authentication" 
+
+curl  -X POST   http://localhost:8001/services/account-service/plugins  --data "name=basic-auth"  --data "config.hide_credentials=true"  --data "config.anonymous=81823632-10c0-4098-a4f7-31062520c1e6" 
+curl  -X POST   http://localhost:8001/services/messages-service/plugins  --data "name=basic-auth"  --data "config.hide_credentials=true"  --data "config.anonymous=81823632-10c0-4098-a4f7-31062520c1e6"
+curl  -X POST   http://localhost:8001/services/video-service/plugins  --data "name=basic-auth"  --data "config.hide_credentials=true"  --data "config.anonymous=81823632-10c0-4098-a4f7-31062520c1e6"
+curl  -X POST   http://localhost:8001/services/authentication-service/plugins  --data "name=basic-auth"  --data "config.hide_credentials=true"  --data "config.anonymous=81823632-10c0-4098-a4f7-31062520c1e6"
+
+
+curl  -X POST  http://localhost:8001/services/account-service/plugins   --data "name=session"   --data "config.storage=kong" --data "config.cookie_secure=true"
+curl  -X POST   http://localhost:8001/services/messages-service/plugins   --data "name=session"   --data "config.storage=kong" --data "config.cookie_secure=true"
+curl  -X POST   http://localhost:8001/services/video-service/plugins  --data "name=session"   --data "config.storage=kong" --data "config.cookie_secure=true"
+curl  -X POST   http://localhost:8001/services/authentication-service/plugins  --data "name=session"   --data "config.storage=kong" --data "config.cookie_secure=true"
+
+curl  -X POST  http://localhost:8001/services/account-service/plugins --data "name=request-termination"  --data "config.status_code=403"  --data "config.message=No access for you!" --data "consumer.id=81823632-10c0-4098-a4f7-31062520c1e6"
+curl  -X POST   http://localhost:8001/services/messages-service/plugins --data "name=request-termination"  --data "config.status_code=403"  --data "config.message=No access for you!" --data "consumer.id=81823632-10c0-4098-a4f7-31062520c1e6"
+curl  -X POST   http://localhost:8001/services/video-service/plugins --data "name=request-termination"  --data "config.status_code=403"  --data "config.message=No access for you!" --data "consumer.id=81823632-10c0-4098-a4f7-31062520c1e6"
+curl  -X POST   http://localhost:8001/services/authentication-service/plugins --data "name=request-termination"  --data "config.status_code=403"  --data "config.message=No access for you!" --data "consumer.id=81823632-10c0-4098-a4f7-31062520c1e6"
+
+
+curl -X POST http://localhost:8001/services/account-service/plugins --data "name=cors"  --data "config.origins=http://localhost:8081" --data "config.methods=GET" --data "config.methods=POST" --data "config.methods=OPTIONS"  --data "config.headers=*"  --data "config.exposed_headers=*" --data "config.headers=Authorization" --data "config.headers=Content-Type" --data "config.headers=Content-Length" --data "config.headers=X-Requested-With"  --data "config.exposed_headers=Authorization"   --data "config.exposed_headers=X-Requested-With" --data "config.credentials=true" --data "config.max_age=3600"  
+curl -X POST http://localhost:8001/services/messages-service/plugins --data "name=cors"  --data "config.origins=http://localhost:8081" --data "config.methods=GET" --data "config.methods=POST" --data "config.methods=OPTIONS"  --data "config.headers=*"  --data "config.exposed_headers=*" --data "config.headers=Authorization" --data "config.headers=Content-Type" --data "config.headers=Content-Length" --data "config.headers=X-Requested-With"  --data "config.exposed_headers=Authorization"   --data "config.exposed_headers=X-Requested-With" --data "config.credentials=true" --data "config.max_age=3600"  
+curl -X POST http://localhost:8001/services/video-service/plugins  --data "name=cors"  --data "config.origins=http://localhost:8081" --data "config.methods=GET" --data "config.methods=POST" --data "config.methods=OPTIONS"  --data "config.headers=*"  --data "config.exposed_headers=*" --data "config.headers=Authorization" --data "config.headers=Content-Type" --data "config.headers=Content-Length" --data "config.headers=X-Requested-With"  --data "config.exposed_headers=Authorization"   --data "config.exposed_headers=X-Requested-With" --data "config.credentials=true" --data "config.max_age=3600"  
+curl -X POST http://localhost:8001/services/authentication-service/plugins --data "name=cors"  --data "config.origins=http://localhost:8081" --data "config.methods=GET" --data "config.methods=POST" --data "config.methods=OPTIONS"  --data "config.headers=*"  --data "config.exposed_headers=*" --data "config.headers=Authorization" --data "config.headers=Content-Type" --data "config.headers=Content-Length" --data "config.headers=X-Requested-With"  --data "config.exposed_headers=Authorization"   --data "config.exposed_headers=X-Requested-With" --data "config.credentials=true" --data "config.max_age=3600"  
+

@@ -1,0 +1,11 @@
+com\example\Registration\WrapperObjects\ConsumerCredentialsWO.class
+com\example\Registration\WrapperObjects\AccountWO.class
+com\example\Registration\Entity\User.class
+com\example\Registration\RegistrationApplication.class
+com\example\Registration\WrapperObjects\UserWO.class
+com\example\Registration\Controller\RegistrationController.class
+com\example\Registration\Repository\UserRepo.class
+com\example\Registration\WrapperObjects\ConsumerWO.class
+com\example\Registration\Service\RegistrationService.class
+com\example\Registration\WrapperObjects\RegistrationWO.class
+com\example\Registration\RegistrationApplication$1.class

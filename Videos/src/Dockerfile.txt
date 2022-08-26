@@ -1,0 +1,23 @@
+FROM alpine
+RUN apk --no-cache upgrade
+RUN apk add --no-cache apache2
+RUN add ffmpeg
+RUN apk upgrade
+RUN add nano
+RUN add bash
+RUN add curl
+RUN add wget
+RUN apk add --update alpine-sdk
+RUN apk add openrc --no-cache
+# Creat directory for apache2 to store PID file
+RUN mkdir /run/apache2
+EXPOSE 80
+CMD ["-D","FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/httpd"]
+
+
+
+FROM openjdk:8-jdk-alpine
+MAINTAINER adrien
+COPY target/Videos-1.0-SNAPSHOT.jar   Videos-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","/Videos-1.0-SNAPSHOT.jar"]

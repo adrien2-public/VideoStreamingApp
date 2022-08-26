@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: user
+    url: jdbc:mysql://host.docker.internal:3308/videos
+    password: password
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: -1
+      max-request-size: 500MB
+server:
+  port: '8501'
+
+  tomcat:
+    max-http-form-post-size: 500MB

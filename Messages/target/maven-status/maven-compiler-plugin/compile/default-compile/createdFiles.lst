@@ -1,0 +1,13 @@
+com\example\Messages\WrapperOjects\CommentWO.class
+com\example\Messages\Repository\ConversationRepo.class
+com\example\Messages\WrapperOjects\ConversationListWO.class
+com\example\Messages\WrapperOjects\CommentListWrapperObject.class
+com\example\Messages\Controller\MessageController.class
+com\example\Messages\MessageApplication$1.class
+com\example\Messages\Service\MessageService.class
+com\example\Messages\Entity\Conversation.class
+com\example\Messages\MessageApplication.class
+com\example\Messages\WrapperOjects\AccountWO.class
+com\example\Messages\Entity\Comment.class
+com\example\Messages\Repository\CommentRepo.class
+com\example\Messages\WrapperOjects\ConversationWO.class
