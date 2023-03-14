@@ -261,7 +261,7 @@ services:
   angular-node:
     container_name:  angular-node
     build:
-        context: ./AngularService
+        context: ./AngularServices
         dockerfile: Dockerfile
     ports:
       - "8080:80"
