@@ -33,6 +33,7 @@ public class AccountApplication {
         return new BCryptPasswordEncoder();
     }
 
+    
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
